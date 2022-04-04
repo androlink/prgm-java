@@ -1,5 +1,7 @@
 package exo.TP_java;
 
+import exo.TP_java.notification.Notifiable;
+
 public class DocBibliotheque {
     private String titre;
     private String code;        // 000. OOO A000A
@@ -47,7 +49,7 @@ public class DocBibliotheque {
         this.auteur = auteur;
     }
     //todo reervation
-    public boolean reservation(MembreBibliotheque me) {//initialise une reservation
+    public boolean reservation(Notifiable me) {//initialise une reservation
         boolean test = false;
         if ((!reservé && ou == etat.emprunté) && me != null && me!=emprunteur) {
             reservateur = me;

@@ -2,6 +2,7 @@ package exo.TP_java;
 
 import exo.TP_java.personalExeption.NombreHorsLimiteException;
 
+import java.lang.reflect.Executable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -68,7 +69,7 @@ public class CatalogueBibliotheque {
     }
     public DocBibliotheque accesDoc(int i) throws NombreHorsLimiteException {
 
-        if(i<0||i>docs.size())throw new NombreHorsLimiteException(i);
+        if(i<=0||i>docs.size())throw new NombreHorsLimiteException(i);
         DocBibliotheque test = null;
         if(i>0 && i< docs.size()) test= docs.get(i);
         return test;
