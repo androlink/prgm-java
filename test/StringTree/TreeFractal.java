@@ -43,10 +43,10 @@ public class TreeFractal {
 
     public static void main(String[] args) {
         TreeFractal tree = new TreeFractal("N");
-        tree.addRule('N',"TC");
+        tree.addRule('N',"TQ");
         tree.addRule('T',"T");
-        tree.addRule('C',"CQ");
-        tree.addRule('Q',"Q");
+        tree.addRule('C',"C");
+        tree.addRule('Q',"CQ");
         System.out.println(tree.update(10,tree.getSeed()));
         //System.out.println(tree.getSeed());
 

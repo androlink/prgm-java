@@ -1,8 +1,10 @@
 package exo.TP_java;
 
+import exo.TP_java.notification.Notifiable;
+
 import java.util.ArrayList;
 
-public class MembreBibliotheque {
+public class MembreBibliotheque implements Notifiable {
     static public int dernierNumeroAbonne =0;
     private int noMemebre;
     private String nom;
@@ -100,5 +102,10 @@ public class MembreBibliotheque {
 
     public String getAdresse() {
         return adresse;
+    }
+
+    @Override
+    public boolean docDisponible(DocBibliotheque d) {
+        return false;
     }
 }
