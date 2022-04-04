@@ -49,7 +49,7 @@ public class DocBibliotheque {
         this.auteur = auteur;
     }
     //todo reervation
-    public boolean reservation(Notifiable me) {//initialise une reservation
+    public boolean reservation(MembreBibliotheque me) {//initialise une reservation
         boolean test = false;
         if ((!reservé && ou == etat.emprunté) && me != null && me!=emprunteur) {
             reservateur = me;
