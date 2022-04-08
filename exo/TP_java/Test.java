@@ -2,6 +2,8 @@ package exo.TP_java;
 
 import exo.TP_java.personalExeption.NombreHorsLimiteException;
 
+import java.util.ArrayList;
+
 public class Test {
     static CatalogueBibliotheque bibliotheque = new CatalogueBibliotheque();
     static ListeMembre membres = new ListeMembre();
