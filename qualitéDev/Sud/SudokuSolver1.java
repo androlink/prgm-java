@@ -16,11 +16,11 @@ import javax.swing.*;
     import java.io.*;
     import java.util.*;
 
-    public class SudokuSolver1 implements ActionListener {
+    public class SudokuSolver1 implements ActionListener {//supression des statics
 
         JFrame selectFrame = new JFrame();
         JFileChooser selectFile = new JFileChooser();
-        JFileChooserDemo view = new JFileChooserDemo();
+        JFileChooserDemo view = new JFileChooserDemo();//serre pour le retour de solution des resultat du sudokuSolver
 
         public static void main(String[] args){
             new SudokuSolver1();
@@ -106,7 +106,7 @@ import javax.swing.*;
             }
         }
 
-        private void printSolutions(Grid grid,List<Grid> solutions) {
+        private void printSolutions(Grid grid,List<Grid> solutions) {//modification des println en drawSudokuln
 
             // Print the grid with the givens
             view.drawSudokuln("Original");
@@ -130,7 +130,7 @@ import javax.swing.*;
         }
 
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e) {//recupere les action de selectFile
             System.out.println(e.getActionCommand());
             if(e.getActionCommand().equals("ApproveSelection")){
                 System.out.println("start solve");
