@@ -13,7 +13,7 @@ public class DocBibliotheque {
     static int countSectionReservation = 0;
 
     private MembreBibliotheque emprunteur;
-    private MembreBibliotheque reservateur;
+    private Notifiable reservateur;
 
 
 
@@ -48,10 +48,11 @@ public class DocBibliotheque {
         this.code = code;
         this.auteur = auteur;
     }
-    //todo reervation
+    //todo reservation
     public boolean reservation(MembreBibliotheque me) {//initialise une reservation
         boolean test = false;
-        if ((!reservé && ou == etat.emprunté) && me != null && me!=emprunteur) {
+
+        if (!reservé && ou == etat.emprunté && me != null && me!=emprunteur) {
             reservateur = me;
             reservé = true;
             test = true;
@@ -69,7 +70,8 @@ public class DocBibliotheque {
                 ou = etat.pile_de_retour;
                 countRetour++;
             }
-            if(reservateur!=null)reservateur.removeDoc();
+            if(reservateur!=null) System.out.println(reservateur.docDisponible(this));
+
             reservateur = null;
             reservé = false;
             test = true;
@@ -112,22 +114,23 @@ public class DocBibliotheque {
         boolean test = false;
 
         if (me != null && me.peutEmprunterUnAutreDocument()) {
-            if (ou == etat.etagère) {
-                countEmprunt++;
-                emprunteur = me;emprunteur.addDoc();
-                ou = etat.emprunté;
-                test = true;
-            }
             if (ou == etat.section_de_reservation && reservateur!=null && me == reservateur) {
                 countEmprunt++;
                 countSectionReservation--;
                 reservé = false;
-                emprunteur = me;emprunteur.addDoc();
-                reservateur.removeDoc();
+                emprunteur = me;
+                emprunteur.addDoc();
                 ou = etat.emprunté;
                 test = true;
                 reservateur = null;
             }
+            else if (ou == etat.etagère) {
+                countEmprunt++;
+                emprunteur = me;emprunteur.addDoc();
+                ou = etat.emprunté;
+                test = true;
+            }
+
         }
         if (!test)throw new Exception("not enouth space");
         return test;
@@ -174,7 +177,7 @@ public class DocBibliotheque {
         return emprunteur;
     }
 
-    public MembreBibliotheque getReservateur() {
+    public Notifiable getReservateur() {
         return reservateur;
     }
 

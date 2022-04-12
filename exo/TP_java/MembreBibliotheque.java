@@ -2,11 +2,9 @@ package exo.TP_java;
 
 import exo.TP_java.notification.Notifiable;
 
-import java.util.ArrayList;
-
-public class MembreBibliotheque implements Notifiable {
-    static public int dernierNumeroAbonne =0;
-    private int noMemebre;
+public abstract class MembreBibliotheque implements Notifiable {
+    private static int dernierNumeroAbonne = 0;
+    private int noMembre;
     private String nom;
     private String prenom;
     private int noTel;
@@ -17,7 +15,8 @@ public class MembreBibliotheque implements Notifiable {
 
 
     public MembreBibliotheque(){
-        noMemebre= dernierNumeroAbonne++;
+        noMembre = dernierNumeroAbonne;
+        dernierNumeroAbonne+=1;
     }
 
     public MembreBibliotheque(String nom,String prenom,int noTel,String adresse){
@@ -26,6 +25,8 @@ public class MembreBibliotheque implements Notifiable {
         this.noTel=noTel;
         this.nom=nom;
 
+        noMembre = dernierNumeroAbonne;
+        dernierNumeroAbonne+=1;
     }
 
     boolean emprtunter(CatalogueBibliotheque b,int index){
@@ -51,12 +52,12 @@ public class MembreBibliotheque implements Notifiable {
         emprunté++;
     }
     public String affMembre(){
-        return "Membre no : " + noMemebre + " nom : " + nom +" prenom : " + prenom;
+        return "Membre no : " + noMembre + " nom : " + nom +" prenom : " + prenom;
     }
     @Override
     public String toString() {
         return "MembreBibliotheque{" +
-                "noMemebre=" + noMemebre +
+                "noMemebre=" + noMembre +
                 ", nom='" + nom + '\'' +
                 ", prenom='" + prenom + '\'' +
                 ", noTel=" + noTel +
@@ -64,8 +65,8 @@ public class MembreBibliotheque implements Notifiable {
                 '}';
     }
 
-    public void setNoMemebre(int noMemebre) {
-        this.noMemebre = noMemebre;
+    public void setNoMembre(int noMembre) {
+        this.noMembre = noMembre;
     }
 
     public void setNom(String nom) {
@@ -84,8 +85,8 @@ public class MembreBibliotheque implements Notifiable {
         this.adresse = adresse;
     }
 
-    public int getNoMemebre() {
-        return noMemebre;
+    public int getNoMembre() {
+        return noMembre;
     }
 
     public String getNom() {
@@ -104,8 +105,4 @@ public class MembreBibliotheque implements Notifiable {
         return adresse;
     }
 
-    @Override
-    public boolean docDisponible(DocBibliotheque d) {
-        return false;
-    }
 }

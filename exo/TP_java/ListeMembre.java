@@ -9,7 +9,7 @@ public class ListeMembre {
     }
     public MembreBibliotheque accesMembre(int num){
         for(MembreBibliotheque m : membres){
-            if(m.getNoMemebre()==num)return m;
+            if(m.getNoMembre()==num)return m;
         }
         return null;
     }
@@ -18,6 +18,7 @@ public class ListeMembre {
         if(!membres.contains(m)) {
             membres.add(m);
             test=true;
+            System.out.println("add new membre "+m.getNoMembre());
         }
         return test;
     }

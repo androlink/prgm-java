@@ -35,29 +35,30 @@ public class CatalogueBibliotheque {
     }
     public boolean rendreDoc(int indiceDoc){
         boolean test=false;
-        if(indiceDoc>0 && indiceDoc< docs.size()){
+        if(indiceDoc>=0 && indiceDoc< docs.size()){
             test= docs.get(indiceDoc).retour();
         }
         return test;
     }
     public boolean annulResaDoc(int indiceDoc){
         boolean test=false;
-        if(indiceDoc>0 && indiceDoc< docs.size()){
+        if(indiceDoc>=0 && indiceDoc< docs.size()){
             test= docs.get(indiceDoc).dereservation();
         }
         return test;
     }
     public boolean reserverDoc(int indiceDoc , MembreBibliotheque m){
         boolean test=false;
-        if(indiceDoc>0 && indiceDoc< docs.size()){
+        if(indiceDoc>=0 && indiceDoc< docs.size()){
             test= docs.get(indiceDoc).reservation(m);
+
         }
         return test;
     }
     public boolean emprunterDoc(int indiceDoc , MembreBibliotheque m){
         boolean test = false;
         try {
-            if (indiceDoc > 0 && indiceDoc < docs.size()) {
+            if (indiceDoc >= 0 && indiceDoc < docs.size()) {
                 test = docs.get(indiceDoc).emprunt(m);
             }
 
@@ -69,9 +70,9 @@ public class CatalogueBibliotheque {
     }
     public DocBibliotheque accesDoc(int i) throws NombreHorsLimiteException {
 
-        if(i<=0||i>docs.size())throw new NombreHorsLimiteException(i);
+        if(i<0||i>docs.size())throw new NombreHorsLimiteException(i);
         DocBibliotheque test = null;
-        if(i>0 && i< docs.size()) test= docs.get(i);
+        if(i>=0 && i< docs.size()) test= docs.get(i);
         return test;
     }
     public boolean supDoc(DocBibliotheque d){

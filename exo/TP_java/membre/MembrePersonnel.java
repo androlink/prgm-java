@@ -4,7 +4,7 @@ import exo.TP_java.DocBibliotheque;
 import exo.TP_java.MembreBibliotheque;
 import exo.TP_java.notification.Notifiable;
 
-public class MembrePersonnel extends MembreBibliotheque implements Notifiable {
+public class MembrePersonnel extends MembreBibliotheque {
 
     public MembrePersonnel(String nom, String prenom, int noTel, String adresse) {
         super(nom, prenom, noTel, adresse);
