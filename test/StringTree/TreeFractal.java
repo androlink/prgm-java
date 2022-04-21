@@ -2,44 +2,44 @@ package test.StringTree;
 
 import java.util.ArrayList;
 
+/**
+ * @author androlink
+ * @see Rule
+ *
+ */
 public class TreeFractal {
 
-    String seed="";
-    String tree="";
+    String seed;
+
     ArrayList<Rule> rules= new ArrayList<>();
 
     TreeFractal(String seed){
         this.seed=seed;
-        //this.tree=this.seed;
     }
-    String update(int i,String t){
-        //t="A";
-        String newTree="";
-        System.out.println(t);
-        if(i==0)return t;
-        for(char s:t.toCharArray()){
-            newTree+=getRuleDev(s);
-            //System.out.println(s + " ->" + getRuleDev(s));
-        }
+    String update(int i,String tree){
 
+        String newTree="";
+        System.out.println(tree);
+        if(i==0)return tree;
+        for(char c:tree.toCharArray()){
+            newTree+=getRuleDev(c);
+        }
         return update(i-1,newTree);
     }
 
     void addRule(char ini,String dev){
-        for(Rule r:rules)if(ini==r.ini)return;
+        for(Rule rule:rules)if(ini==rule.getId())return;
         rules.add(new Rule(ini,dev));
     }
 
-    String getRuleDev(char i){
-        for(Rule r:rules)if(i==r.ini)return r.dev;
+    String getRuleDev(char c){
+        for(Rule rule:rules)if(c==rule.getId())return rule.getDev();
         return "";
     }
     String getSeed(){
         return seed;
     }
-    String getTree(){
-        return tree;
-    }
+
 
     public static void main(String[] args) {
         TreeFractal tree = new TreeFractal("N");
