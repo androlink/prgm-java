@@ -1,11 +1,11 @@
 package qualitéDev.com.rg;
 
-import qualitéDev.com.rg.huffmancoding.LetsCompressAFileItsFunny;
+import qualitéDev.com.rg.huffmancoding.Compressor;
 
 public class Test {
     public static void main(String[] args) {
-        LetsCompressAFileItsFunny t = new LetsCompressAFileItsFunny();
-        if (t.doAllStuffForThisClass("F:\\QualiteDev\\tp_code_propre\\test.txt", "F:\\QualiteDev\\tp_code_propre\\compressed.txt")) {
+        Compressor t = new Compressor();
+        if (t.compressFile("C:\\Users\\Androlink\\IdeaProjects\\cours\\text.txt", "C:\\Users\\Androlink\\IdeaProjects\\cours\\compressed.txt")) {
             System.out.println("Compression successful !");
         }
     }

@@ -1,15 +1,15 @@
 package qualitéDev.com.rg.huffmancoding;
 
-import qualitéDev.com.rg.binarytree.LeTrucQuiContientLeMachin;
+import qualitéDev.com.rg.binarytree.Arbre;
 import qualitéDev.com.rg.filemanager.ReadFile;
 import qualitéDev.com.rg.filemanager.WriteFile;
 
 import java.util.HashMap;
 import java.util.HashSet;
 
-public class LetsCompressAFileItsFunny {
+public class Compressor {
 
-    public boolean doAllStuffForThisClass(String file_path, String compressed_file_path) {
+    public boolean compressFile(String file_path, String compressed_file_path) {
         boolean result = false;
 
         ReadFile readFile = new ReadFile(file_path);
@@ -18,7 +18,7 @@ public class LetsCompressAFileItsFunny {
         HashMap<Character, Integer> letsGo = countOccurrences(fileContent);
 
 
-        LeTrucQuiContientLeMachin binary_tree = new GenerateBinaryTree()
+        Arbre binary_tree = new GenerateBinaryTree()
                 .TreeFromOccurrences(letsGo);
 
 
@@ -41,11 +41,11 @@ public class LetsCompressAFileItsFunny {
 
         String hehehe = "";
         int i;
-        for (i = 0; i < bytesFromFileContent.length()/8; i++) {
-            int a = Integer.parseInt(bytesFromFileContent.substring(8*i,(i+1)*8),2);
-            hehehe += (char)(a);
+        for (i = 0; i < bytesFromFileContent.length() / 8; i++) {
+            int a = Integer.parseInt(bytesFromFileContent.substring(8 * i, (i + 1) * 8), 2);
+            hehehe += (char) (a);
         }
-        String missingBytes = bytesFromFileContent.substring(i*8);
+        String missingBytes = bytesFromFileContent.substring(i * 8);
 
         // The replace function is here to escape the encoding table to avoid problems when decompressing
         writeFile.writeText(characterCode.toString().replace("\n", "\\n"));
@@ -56,14 +56,15 @@ public class LetsCompressAFileItsFunny {
         writeFile.close();
         return result;
     }
-// ++++++++++[>+>+++>+++++++>++++++++++<<<<-]>>>>++++++++++++.-.+++.----.------.+++++++++++++.-------------------.
+
+    // ++++++++++[>+>+++>+++++++>++++++++++<<<<-]>>>>++++++++++++.-.+++.----.------.+++++++++++++.-------------------.
     private String extractFileContent(ReadFile file) {
         String extracted = "";
-        String hihiHa = file.getLine();
+        String extractor = file.getLine();
 
-        while (hihiHa != null) {
-            extracted = extracted.concat(hihiHa + "\n");
-            hihiHa = file.getLine();
+        while (extractor != null) {
+            extracted = extracted.concat(extractor + "\n");
+            extractor = file.getLine();
         }
 
         extracted = extracted.substring(0, extracted.length() - 1);
@@ -92,7 +93,7 @@ public class LetsCompressAFileItsFunny {
     private boolean onlyOneCharacter(String input) {
         boolean result = true;
         HashSet<Character> set = new HashSet<>();
-        for (int i =0 ;i < input.length();i++){
+        for (int i = 0; i < input.length(); i++) {
             set.add(input.charAt(i));
             if (set.size() > 1) {
                 result = false;
