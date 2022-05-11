@@ -3,14 +3,14 @@ package qualitéDev.com.rg.binarytree;
 public class Branche implements Comparable {
     private final Character character;
     private int count;
-    private Branche first;
-    private Branche second;
+    private Branche droite;
+    private Branche gauche;
 
     public Branche(Character character, int count) {
         this.character = character;
         this.count = count;
-        this.first = null;
-        this.second = null;
+        this.droite = null;
+        this.gauche = null;
 
 
     }
@@ -27,20 +27,20 @@ public class Branche implements Comparable {
         this.count = count;
     }
 
-    public Branche getFirst() {
-        return first;
+    public Branche getDroite() {
+        return droite;
     }
 
-    public void setFirst(Branche first) {
-        this.first = first;
+    public void setDroite(Branche droite) {
+        this.droite = droite;
     }
 
-    public Branche getSecond() {
-        return second;
+    public Branche getGauche() {
+        return gauche;
     }
 
-    public void setSecond(Branche second) {
-        this.second = second;
+    public void setGauche(Branche gauche) {
+        this.gauche = gauche;
     }
 
     public int compareTo(Object o) {

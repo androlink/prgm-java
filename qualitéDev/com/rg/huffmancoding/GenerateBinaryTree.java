@@ -30,8 +30,8 @@ public class GenerateBinaryTree {
         Branche firstNode = nodes.remove(0);
         Branche secondNode = nodes.remove(0);
         Branche newNode = new Branche(null, firstNode.getCount() + secondNode.getCount());
-        newNode.setFirst(firstNode);
-        newNode.setSecond(secondNode);
+        newNode.setDroite(firstNode);
+        newNode.setGauche(secondNode);
 
         nodes.add(newNode);
         nodes.sort(Branche::compareTo);
@@ -41,8 +41,8 @@ public class GenerateBinaryTree {
 
     public void generateCharacterCode(HashMap<Character, String> characterCode, Branche node, String code) {
         if (node.getCharacter() == null) {
-            generateCharacterCode(characterCode, node.getFirst(), code + "0");
-            generateCharacterCode(characterCode, node.getSecond(), code + "1");
+            generateCharacterCode(characterCode, node.getDroite(), code + "0");
+            generateCharacterCode(characterCode, node.getGauche(), code + "1");
         }
         if (node.getCharacter() != null) {
             characterCode.put(node.getCharacter(), code);

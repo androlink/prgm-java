@@ -18,6 +18,7 @@ public class Calculatrice extends JFrame {
 
     public Calculatrice(){
         super("calculatrice");
+        System.out.println(this.getClass().getSimpleName());
         globale =(JPanel) getContentPane();
         setVisible(true);
         setDefaultCloseOperation(3);
